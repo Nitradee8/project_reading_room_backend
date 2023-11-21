@@ -22,7 +22,7 @@ model User {
 
 enum ROLE {
   USER
-  AMIN
+  ADMIN
 }
 
 model Order {
