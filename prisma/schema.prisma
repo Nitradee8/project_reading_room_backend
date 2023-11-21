@@ -15,9 +15,14 @@ model User {
   firstName String
   lastName  String
   email     String? @unique
-  mobile    String? @unique
   password  String
+  role      ROLE    @default(USER)
   orders    Order[]
+}
+
+enum ROLE {
+  USER
+  AMIN
 }
 
 model Order {
@@ -37,12 +42,22 @@ model Product {
   price       Int
   description String
   category    Category @relation(fields: [categoryId], references: [id])
-  author      String
+  author      author   @relation(fields: [authorId], references: [id])
+  image       Image    @relation(fields: [imageId], references: [id])
+  imageId     Int
+  authorId    Int
+}
+
+model Image {
+  id      Int       @id @default(autoincrement())
+  imageId String?
+  Product Product[]
 }
 
 model author {
-  id   Int    @id @default(autoincrement())
-  name String
+  id      Int       @id @default(autoincrement())
+  name    String
+  Product Product[]
 }
 
 model Category {

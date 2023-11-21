@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const { registerSchema, loginSchema } = require('../validators/auth-validator');
 const prisma = require('../models/prisma');
 const createError = require('../utils/create-error');
-const { request } = require('express');
+
 
 
 exports.register = async (req, res, next) => {
@@ -67,3 +67,6 @@ exports.login = async (req, res, next) => {
     }
   };
   
+  exports.getMe = (req, res) => {
+    res.status(200).json({ user: req.user });
+  };
