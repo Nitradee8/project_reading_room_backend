@@ -1,17 +1,23 @@
 const Joi = require("joi");
 
 const createProductSchema = Joi.object({
-  name: Joi.string().trim().required(),
+  categoryId: Joi.number().required(),
+  bookname: Joi.string().trim().required(),
+  bookname: Joi.string().trim().required(),
+  description: Joi.string().trim().required(),
   image: Joi.string().trim().required(),
-  amount: Joi.number().integer().positive().required(),
   price: Joi.number().integer().positive().required(),
+  authorId: Joi.number().required(),
 });
 
 const updateProductSchema = Joi.object({
-  productId: Joi.number().integer().positive().required(),
-  name: Joi.string().trim(),
-  amount: Joi.number().integer().positive(),
-  price: Joi.number().integer().positive(),
+  categoryId: Joi.number().required(),
+  bookname: Joi.string().trim().required(),
+  bookname: Joi.string().trim().required(),
+  description: Joi.string().trim().required(),
+  image: Joi.string().trim().required(),
+  price: Joi.number().integer().positive().required(),
+  authorId: Joi.number().required(),
 });
 
 const deleteProductSchema = Joi.object({

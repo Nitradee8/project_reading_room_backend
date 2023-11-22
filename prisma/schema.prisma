@@ -40,18 +40,11 @@ model Product {
   categoryId  Int
   bookname    String
   price       Int
-  description String
+  description String  @db.VarChar(255)
   category    Category @relation(fields: [categoryId], references: [id])
   author      author   @relation(fields: [authorId], references: [id])
-  image       Image    @relation(fields: [imageId], references: [id])
-  imageId     Int
+  image       String
   authorId    Int
-}
-
-model Image {
-  id      Int       @id @default(autoincrement())
-  imageId String?
-  Product Product[]
 }
 
 model author {
