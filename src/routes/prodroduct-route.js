@@ -7,7 +7,8 @@ const router = express.Router();
 
 router.post('/createproduct',authenticate,uploadMiddleware.single("image"),productController.createProduct);
 router.get('/allproduct',productController.getAllProduct)
-// router.patch("/update", productController.updateProduct);
-// router.delete("/delete/:productId", productController.deleteProduct);
+router.delete("/delete/:productId", productController.deleteProduct);
+router.patch("/update/:productId", productController.updateProduct);
+router.get('/:getProductById',productController.getBookname)
 
 module.exports = router;

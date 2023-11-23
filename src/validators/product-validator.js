@@ -11,13 +11,10 @@ const createProductSchema = Joi.object({
 });
 
 const updateProductSchema = Joi.object({
-  categoryId: Joi.number().required(),
-  bookname: Joi.string().trim().required(),
-  bookname: Joi.string().trim().required(),
-  description: Joi.string().trim().required(),
-  image: Joi.string().trim().required(),
-  price: Joi.number().integer().positive().required(),
-  authorId: Joi.number().required(),
+  bookname: Joi.string().trim(),
+  description: Joi.string().trim(),
+  price: Joi.number().integer().positive(),
+
 });
 
 const deleteProductSchema = Joi.object({
