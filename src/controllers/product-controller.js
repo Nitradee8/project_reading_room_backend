@@ -76,7 +76,8 @@ exports.updateProduct = async (req, res, next) => {
 exports.deleteProduct = async (req, res, next) => {
   try {
     const { value, error } = deleteProductSchema.validate(req.params);
-    console.log(value);
+    // console.log(value);
+    // console.log(req.params)
 
     if (error) {
       error.statusCode = 400;
@@ -98,7 +99,12 @@ exports.deleteProduct = async (req, res, next) => {
 
 exports.getAllProduct = async (req, res, next) => {
   try {
-    const allProduct = await prisma.product.findMany()
+    const allProduct = await prisma.product.findMany({
+      include:{
+        author:true,
+        category:true
+      }
+    })
     res.status(200).json({ allProduct });
   } catch (error) {
     next(error);
@@ -127,6 +133,7 @@ exports.addToCart = async (req, res, next) => {
 
   try {
     const { bookId } = req.params;
+    console.log(bookId)
     await prisma.basket.create({
       data: {
         userId: req.user.id,
@@ -161,7 +168,7 @@ exports.getAllBasket = async ( req, res, next) => {
   }
 }
 
-exports.getAllBookPage = async ( req,res,next) => {
+exports.getAllBookPage = async ( req,res,next) => { //content
   try {
     console.log(req.params)
     const getBookPage = await prisma.product.findFirst({
