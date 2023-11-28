@@ -5,7 +5,8 @@ const createProductSchema = Joi.object({
   bookname: Joi.string().trim().required(),
   bookname: Joi.string().trim().required(),
   description: Joi.string().trim().required(),
-  image: Joi.string().trim().required(),
+  content: Joi.string().trim().required(),
+  // image: Joi.string().trim().required(),
   price: Joi.number().integer().positive().required(),
   authorId: Joi.number().required(),
 });

@@ -9,6 +9,9 @@ router.post('/createproduct',authenticate,uploadMiddleware.single("image"),produ
 router.get('/allproduct',productController.getAllProduct)
 router.delete("/delete/:productId", productController.deleteProduct);
 router.patch("/update/:productId", productController.updateProduct);
-router.get('/:getProductById',productController.getBookname)
+router.get('/getallbasket',authenticate,productController.getAllBasket);
+router.get('/getBookpage/:pageId',authenticate,productController.getAllBookPage);
+router.get('/:getProductById',productController.getBookname);
+router.post('/postaddbook/:bookId',authenticate,productController.addToCart);
 
 module.exports = router;
